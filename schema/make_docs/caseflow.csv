@@ -59,6 +59,7 @@ appeals,establishment_last_submitted_at,datetime,,,,,,Timestamp for when the the
 appeals,establishment_processed_at,datetime,,,,,,Timestamp for when the establishment has succeeded in processing.
 appeals,establishment_submitted_at,datetime,,,,,,Timestamp for when the the intake was submitted for asynchronous processing.
 appeals,filed_by_va_gov,boolean,,,,,,Indicates whether or not this form came from VA.gov
+appeals,homelessness,boolean ∗,x,,,,,Indicates whether or not a veteran is experiencing homelessness
 appeals,id,integer (8) PK,x,x,,,,
 appeals,legacy_opt_in_approved,boolean,,,,,,Indicates whether a Veteran opted to withdraw matching issues from the legacy process. If there is a matching legacy issue and it is not withdrawn then it is ineligible for the decision review.
 appeals,original_hearing_request_type,string,,,,,,The hearing type preference for an appellant before any changes were made in Caseflow
@@ -280,7 +281,7 @@ claim_establishments,email_ro_id,string,,,,,,
 claim_establishments,ep_code,string,,,,,,
 claim_establishments,id,integer PK,x,x,,,,
 claim_establishments,outcoding_date,datetime,,,,,,
-claim_establishments,task_id,integer FK,,,x,,,
+claim_establishments,task_id,integer FK,,,x,,x,references dispatch_tasks
 claim_establishments,updated_at,datetime ∗,x,,,,x,
 claimants,,,,,,,,This table bridges decision reviews to participants when the participant is listed as a claimant on the decision review. A participant can be a claimant on multiple decision reviews.
 claimants,created_at,datetime,,,,,,
@@ -355,7 +356,7 @@ dispatch_tasks,user_id,integer FK,,,x,,x,
 distributed_cases,,,,,,,,
 distributed_cases,case_id,string ∗,x,,,,x,
 distributed_cases,created_at,datetime,,,,,,
-distributed_cases,distribution_id,integer FK,,,x,,,
+distributed_cases,distribution_id,integer FK,,,x,,x,
 distributed_cases,docket,string ∗,x,,,,,
 distributed_cases,docket_index,integer ∗,x,,,,,
 distributed_cases,genpop,boolean,,,,,,
